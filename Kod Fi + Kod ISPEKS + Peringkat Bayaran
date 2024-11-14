@@ -1,0 +1,23 @@
+--Check kod fi + kod ispeks + peringkat bayaran										
+--CHECK BALIK KOD FI										
+SELECT										
+hfp.FLAG_AKTIF,										
+hfp.KOD AS kod_fi,										
+hfp.PERIHAL AS perihal_kod_fi,										
+rsak.KOD AS kod_bendahari,										
+rsak.PERIHAL AS perihal_kodbendahari,										
+(SELECT KOD FROM RJK_SENARAI_AHLI_KUMPULAN WHERE SENARAI_AHLI_KUMPULAN_ID = hfp2.PERINGKAT_BAYARAN_ID) AS peringkat_bayaran										
+FROM										
+HSL_FI_PEJABAT hfp,										
+RJK_SENARAI_AHLI_KUMPULAN rsak,										
+HSL_FI_PEJABAT hfp2										
+WHERE										
+hfp.KOD_BENDAHARI_ID = rsak.SENARAI_AHLI_KUMPULAN_ID										
+AND hfp2.KOD_BENDAHARI_ID = hfp.KOD_BENDAHARI_ID										
+--AND hfp.KOD LIKE '121'										
+AND rsak.KOD LIKE '%L1112104%'										
+										
+										
+										
+										
+									
